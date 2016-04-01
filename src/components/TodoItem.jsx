@@ -11,6 +11,7 @@ export default class TodoItem extends React.Component {
         </label>
         <button className="destroy"></button>
       </div>
+      <TextInput /> // We add the TextInput component
     </li>
   }
 };
