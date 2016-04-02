@@ -21,7 +21,6 @@ export default class TodoList extends React.Component {
   render() {
     return <section className="main">
       <ul className="todo-list">
-        // Only the filtered items are displayed
         {this.getItems().map(item =>
           <TodoItem key={item.get('text')}
                     text={item.get('text')}
