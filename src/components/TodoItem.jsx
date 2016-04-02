@@ -1,15 +1,11 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import TextInput from './TextInput';
 import classNames from 'classnames';
+import TextInput from './TextInput';
 
-
-export default class TodoItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-  }
-  render() {
+export default React.createClass({
+  mixins: [PureRenderMixin],
+  render: function () {
     var itemClass = classNames({
       'todo': true,
       'completed': this.props.isCompleted,
@@ -29,7 +25,10 @@ export default class TodoItem extends React.Component {
         <button className="destroy"
                 onClick={() => this.props.deleteItem(this.props.id)}></button>
       </div>
-      <TextInput /> // We add the TextInput component
+      <TextInput text={this.props.text}
+                 itemId={this.props.id}
+                 cancelEditing={this.props.cancelEditing}
+                 doneEditing={this.props.doneEditing} />
     </li>
   }
-};
+});
